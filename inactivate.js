@@ -3,6 +3,7 @@ const nodecmd = require('node-cmd');
 const util = require('util');
 
 const cmdAsync = util.promisify(nodecmd.get);
+const execShell = util.promisify(require('child_process').exec);
 
 async function start() {
   try {
@@ -10,7 +11,7 @@ async function start() {
     const currentTime = Math.round(new Date().getTime() / 1000);
     const weekAgo = currentTime - 7 * 24 * 60 * 60;
     const execA = '~/monero-lws-trunk/build/src/monero-lws-admin list_accounts';
-    const cmdresA = await cmdAsync(execA);
+    const cmdresA = await execShell(execA, { maxBuffer: 1024 * 1024 * 10 });
     console.log(cmdresA);
     const parsed = JSON.parse(cmdresA);
     const active = parsed.active;
