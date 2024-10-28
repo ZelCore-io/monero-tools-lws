@@ -14,7 +14,7 @@ async function start() {
     const cmdresA = await execShell(execA, { maxBuffer: 1024 * 1024 * 10 });
     console.log(cmdresA);
     const parsed = JSON.parse(cmdresA);
-    const active = parsed.active;
+    const active = parsed.stdout.active;
     const activeOLD = active.filter((acc) => acc.access_time < weekAgo);
     for (const acc of activeOLD)  {
       // move it to inactive
