@@ -13,8 +13,8 @@ async function start() {
     const execA = '~/monero-lws-trunk/build/src/monero-lws-admin list_accounts';
     const cmdresA = await execShell(execA, { maxBuffer: 1024 * 1024 * 10 });
     console.log(cmdresA);
-    const parsed = JSON.parse(cmdresA);
-    const active = parsed.stdout.active;
+    const parsed = JSON.parse(cmdresA.stdout);
+    const active = parsed.active;
     const activeOLD = active.filter((acc) => acc.access_time < weekAgo);
     for (const acc of activeOLD)  {
       // move it to inactive
