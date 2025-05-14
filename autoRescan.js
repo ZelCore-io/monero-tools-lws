@@ -7,7 +7,7 @@ const cmdAsync = util.promisify(nodecmd.get);
 async function start() {
   try {
     // get list 
-    const execA = '~/monero-lws-trunk/build/src/monero-lws-admin list_requests';
+    const execA = '~/beldex/build/Linux/lws-implementation/release/bin/beldex-lws-admin list_requests';
     const cmdresA = await cmdAsync(execA);
     console.log(cmdresA);
     const parsed = JSON.parse(cmdresA);
@@ -21,7 +21,7 @@ async function start() {
     }
     for (const acc of importReq)  {
       // move it to inactive
-      const execB = `~/monero-lws-trunk/build/src/monero-lws-admin accept_requests import ${acc.address}`;
+      const execB = `~/beldex/build/Linux/lws-implementation/release/bin/beldex-lws-admin accept_requests import ${acc.address}`;
       const cmdresB = await cmdAsync(execB);
       console.log(cmdresB);
     }
