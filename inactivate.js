@@ -52,7 +52,7 @@ async function start() {
 
     console.log('Fetching account list...');
     const execA = '~/monero-lws-trunk/build/src/monero-lws-admin list_accounts';
-    const cmdresA = await execShell(execA, { maxBuffer: 1024 * 1024 * 200 }); // Increased buffer for large response
+    const cmdresA = await execShell(execA, { maxBuffer: 1024 * 1024 * 8000 }); // Increased buffer for large response
 
     console.log('Parsing accounts...');
     const parsed = JSON.parse(cmdresA.stdout);

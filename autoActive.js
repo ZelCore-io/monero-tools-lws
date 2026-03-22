@@ -11,7 +11,7 @@ async function start() {
     const currentTime = Math.round(new Date().getTime() / 1000);
     const weekAgo = currentTime - 7 * 24 * 60 * 60;
     const execA = '~/monero-lws-trunk/build/src/monero-lws-admin list_accounts';
-    const cmdresA = await execShell(execA, { maxBuffer: 1024 * 1024 * 10 });
+    const cmdresA = await execShell(execA, { maxBuffer: 1024 * 1024 * 1000 });
     console.log(cmdresA);
     const parsed = JSON.parse(cmdresA.stdout);
     const inactive = parsed.inactive;
